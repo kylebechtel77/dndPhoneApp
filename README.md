@@ -1,7 +1,8 @@
-#For Contributors
+# For Contributors
 
 To start this project, clone it, then run yarn install, then yarn start.
 Download the expo app on your phone and scan the qr code.
+
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
