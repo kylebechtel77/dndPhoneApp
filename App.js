@@ -1,11 +1,14 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
+import { TabNavigator } from 'react-navigation';
 
-// TODO:: find replacement for this package that works on android
-// or implement different paging solution.
-// import { StackNavigator } from 'react-navigation';
+import AbilitiesScreen from './Screens/Abilities';
+import SkillsScreen from './Screens/Skills';
 
-import HomeScreen from './Screens/Home';
+ const App = TabNavigator ({
+   Abilities: { screen: AbilitiesScreen },
+     Skills: { screen: SkillsScreen },
+ });
 
 const styles = StyleSheet.create({
   container: {
@@ -22,14 +25,6 @@ const styles = StyleSheet.create({
   },
 });
 
-// this is unused due to breaking android
-// const MainScreenNavigator = StackNavigator({
-//   Home: { screen: HomeScreen },
-//   SkillsScreen: { screen: SkillsScreen },
-// });
-
 export default () => (
-  <View style={styles.container}>
-    <HomeScreen />
-  </View>
+    <App />
 );
