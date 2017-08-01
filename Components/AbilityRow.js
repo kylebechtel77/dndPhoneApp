@@ -1,12 +1,29 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import React from 'react';
+import { Text, View } from 'react-native';
+import StyleSheet from '../Styles/AbilityRow';
+import LabeledNumber from './LabeledNumber';
 
+const AbilityRow = (props) => {
+  const ability = props.ability;
+  const modPlus = ability.mod >= 0 ? '+' : '';
+  const savePlus = ability.save >= 0 ? '+' : '';
+  return (
+    <View style={StyleSheet.abilityRow}>
+      <LabeledNumber label="SCORE" value={ability.val} />
+      <Text style={StyleSheet.abilityName}>{ability.text}</Text>
+      <LabeledNumber label="MOD" value={modPlus + ability.mod} />
+      <LabeledNumber label="SAVE" value={savePlus + ability.save} />
+    </View>
+  );
+};
 
-export default class AbilityRow extends Component {
-  render() {
-    let display = /*this.prop.img  + */ this.props.ability.val + " " + this.props.ability.text + " MOD: " + this.props.ability.mod + " SAVE: " + this.props.ability.save;
-    return (
-      <Text>{display}</Text>
-    );
-  }
-}
+AbilityRow.propTypes = {
+  ability: React.PropTypes.shape({
+    val: React.PropTypes.number,
+    mod: React.PropTypes.number,
+    save: React.PropTypes.number,
+    text: React.PropTypes.string,
+  }).isRequired,
+};
+
+export default AbilityRow;
