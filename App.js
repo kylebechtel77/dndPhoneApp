@@ -8,7 +8,7 @@ import SkillsScreen from './Screens/Skills'
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = {  
       name: "Ivan",
       str: { text: "Strength", val: 8, mod: -1, save: -1},
       dex: { text: "Dexterity", val: 8, mod: -1, save: -1},
