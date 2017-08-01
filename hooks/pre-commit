@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo
+echo
+echo "┌───────────────────────────┐"
+echo "│ 1. Running Unit Tests     │"
+echo "└───────────────────────────┘"
+node node_modules/jest/bin/jest.js
+if [ $? -ne 0 ]; then
+  printf "\e[1;31mUnit tests failed. Please check your code and try again.\e[0m\n"
+  exit 1 # exit with failure status
+fi
+printf "\e[1;32mUnit tests complete, no errors.\e[0m\n\n\n"
+
+echo "┌───────────────────────────┐"
+echo "│ 2. Running ESLint         │"
+echo "└───────────────────────────┘"
+for file in $(git diff --diff-filter=d --cached --name-only | grep -E '\.(js|jsx)$')
+do
+  git show ":$file" | node_modules/.bin/eslint --stdin --stdin-filename "$file" # we only want to lint the staged changes, not any un-staged changes
+  if [ $? -ne 0 ]; then
+	printf "\e[1;31mESLint failed on staged file '$file'. Please check your code and try again.\e[0m\n"
+    exit 1 # exit with failure status
+  fi
+done
+printf "\e[1;32mLinting complete, no errors.\e[0m"
+echo
+echo
