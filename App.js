@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+
+//TODO:: find replacement for this package that works on android
+//or implement different paging solution.
+//import { StackNavigator } from 'react-navigation';
 
 import AbilityRow from './Components/AbilityRow'
 import SkillsScreen from './Screens/Skills'
@@ -20,11 +23,12 @@ class HomeScreen extends React.Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation;
+    //this is unused due to breaking android
+    //const { navigate } = this.props.navigation;
     return (
       <View style={styles.header}>
         <Text>Name: {this.state.name}</Text>
-        <View>
+        <View style={styles.container}>
           <Text>ABILITIES</Text>
           <AbilityRow ability={this.state.str} />
           <AbilityRow ability={this.state.dex} />
@@ -32,10 +36,6 @@ class HomeScreen extends React.Component {
           <AbilityRow ability={this.state.int} />
           <AbilityRow ability={this.state.wis} />
           <AbilityRow ability={this.state.char} />
-          <Button
-            onPress={() => navigate('SkillsScreen')}
-            title="View Skills"
-          />
         </View>
       </View>
     );
@@ -43,17 +43,18 @@ class HomeScreen extends React.Component {
 
 }
 
-const MainScreenNavigator = StackNavigator({
-  Home: { screen: HomeScreen },
-  SkillsScreen: { screen: SkillsScreen },
-});
+//this is unused due to breaking android
+// const MainScreenNavigator = StackNavigator({
+//   Home: { screen: HomeScreen },
+//   SkillsScreen: { screen: SkillsScreen },
+// });
 
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <MainScreenNavigator />
+        <HomeScreen />
       </View>
     );
   }
@@ -70,6 +71,6 @@ const styles = StyleSheet.create({
     flex:1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    paddingTop: 50
+    paddingTop: 20
   }
 });
