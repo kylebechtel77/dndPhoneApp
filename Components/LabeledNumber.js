@@ -10,14 +10,8 @@ const LabeledNumber = props => (
 );
 
 LabeledNumber.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
-  ]).isRequired,
-  label: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
-  ]).isRequired,
+  children: React.PropTypes.node.isRequired,
+  label: React.PropTypes.node.isRequired,
 };
 
 export default LabeledNumber;

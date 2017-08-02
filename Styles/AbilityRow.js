@@ -10,6 +10,13 @@ export default StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 10,
   },
+  abilityRowLast: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    alignItems: 'stretch',
+    paddingBottom: 10,
+    paddingTop: 10,
+  },
   abilityName: {
     fontSize: 32,
     flex: 1,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 
 import AbilityRow from '../Components/AbilityRow';
 import BaseStyleSheet from '../Styles/Base';
@@ -21,14 +21,16 @@ export default class HomeScreen extends React.Component {
     // this is unused due to breaking android
     // const { navigate } = this.props.navigation;
     return (
-      <View style={BaseStyleSheet.card}>
-        <AbilityRow ability={this.state.str} />
-        <AbilityRow ability={this.state.dex} />
-        <AbilityRow ability={this.state.con} />
-        <AbilityRow ability={this.state.int} />
-        <AbilityRow ability={this.state.wis} />
-        <AbilityRow ability={this.state.char} />
-      </View>
+      <ScrollView>
+        <View style={BaseStyleSheet.card}>
+          <AbilityRow ability={this.state.str} />
+          <AbilityRow ability={this.state.dex} />
+          <AbilityRow ability={this.state.con} />
+          <AbilityRow ability={this.state.int} />
+          <AbilityRow ability={this.state.wis} />
+          <AbilityRow ability={this.state.char} last />
+        </View>
+      </ScrollView>
     );
   }
 }

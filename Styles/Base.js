@@ -20,8 +20,7 @@ export default StyleSheet.create({
   labeledNumberContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10,
+    width: 50,
   },
   labeledNumberValue: {
     fontSize: 24,
