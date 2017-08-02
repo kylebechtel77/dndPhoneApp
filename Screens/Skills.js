@@ -11,10 +11,6 @@ const styles = StyleSheet.create({
   },
 });
 
-// static navigationOptions = {
-//   title: 'Skills',
-// };
-
 export default () => (
   <View style={styles.container}>
     <Text>TODO: Implement this</Text>

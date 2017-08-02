@@ -32,8 +32,6 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
-    // this is unused due to breaking android
-    // const { navigate } = this.props.navigation;
     return (
       <View style={styles.header}>
         <Text>Name: {this.state.name}</Text>
