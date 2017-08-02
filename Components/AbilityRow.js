@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
-import StyleSheet from '../Styles/AbilityRow';
-import LabeledNumber from './LabeledNumber';
+import StyleSheet from '../Styles/abilityRow';
+import LabeledNumber from './labeledNumber';
 import Dice from '../utils/dice';
 
 const AbilityRow = (props) => {

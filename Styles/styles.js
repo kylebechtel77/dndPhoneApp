@@ -17,10 +17,11 @@ export default StyleSheet.create({
     alignItems: 'stretch',
     margin: 10,
   },
-  labeledNumberContainer: {
-    flexDirection: 'column',
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
     alignItems: 'center',
-    width: 50,
+    justifyContent: 'center',
   },
   labeledNumberValue: {
     fontSize: 24,

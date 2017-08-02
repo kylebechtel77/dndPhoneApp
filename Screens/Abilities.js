@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 
-import AbilityRow from '../Components/AbilityRow';
-import BaseStyleSheet from '../Styles/Base';
+import AbilityRow from '../Components/abilityRow';
+import BaseStyleSheet from '../Styles/styles';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
