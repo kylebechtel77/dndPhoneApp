@@ -9,10 +9,10 @@ const AbilityRow = (props) => {
   const savePlus = ability.save >= 0 ? '+' : '';
   return (
     <View style={StyleSheet.abilityRow}>
-      <LabeledNumber label="SCORE" value={ability.val} />
+      <LabeledNumber label="SCORE">{ability.val}</LabeledNumber>
       <Text style={StyleSheet.abilityName}>{ability.text}</Text>
-      <LabeledNumber label="MOD" value={modPlus + ability.mod} />
-      <LabeledNumber label="SAVE" value={savePlus + ability.save} />
+      <LabeledNumber label="MOD">{modPlus + ability.mod}</LabeledNumber>
+      <LabeledNumber label="SAVE">{savePlus + ability.save}</LabeledNumber>
     </View>
   );
 };
