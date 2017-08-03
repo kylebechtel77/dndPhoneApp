@@ -1,9 +1,9 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
 
+import BaseStyleSheet from './Styles/Base';
 import AbilitiesScreen from './Screens/Abilities';
 import SkillsScreen from './Screens/Skills';
-import BaseStyleSheet from './Styles/styles';
 
 const App = TabNavigator({
   Abilities: { screen: AbilitiesScreen },

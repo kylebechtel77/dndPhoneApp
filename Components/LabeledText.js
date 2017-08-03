@@ -5,19 +5,13 @@ import StyleSheet from '../Styles/Base';
 const LabeledText = props => (
   <View style={StyleSheet.labeledTextContainer}>
     <Text style={StyleSheet.labeledTextLabel}>{props.label}</Text>
-    <Text style={StyleSheet.labeledTextValue}>{props.value}</Text>
+    <Text style={StyleSheet.labeledTextValue}>{props.children}</Text>
   </View>
 );
 
 LabeledText.propTypes = {
-  value: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
-  ]).isRequired,
-  label: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
-  ]).isRequired,
+  children: React.PropTypes.node.isRequired,
+  label: React.PropTypes.node.isRequired,
 };
 
 export default LabeledText;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import StyleSheet from '../Styles/SkillRowStyle';
 import LabeledNumber from './LabeledNumber';
 import LabeledText from './LabeledText';
@@ -9,9 +9,8 @@ const SkillRow = (props) => {
   const modPlus = skill.mod >= 0 ? '+' : '';
   return (
     <View style={StyleSheet.skillRow}>
-      <LabeledText label={skill.typ} value={skill.text} />
-      <LabeledNumber label="MOD" value={modPlus + skill.mod} />
-      
+      <LabeledText label={skill.typ}>{skill.text}</LabeledText>
+      <LabeledNumber label="MOD">{modPlus + skill.mod}</LabeledNumber>
     </View>
   );
 };

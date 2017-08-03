@@ -19,7 +19,7 @@ export default StyleSheet.create({
   },
   card2: {
     flexDirection: 'column',
- //   alignItems: 'stretch',
+    // alignItems: 'stretch',
     margin: 10,
   },
   labeledNumberContainer: {
