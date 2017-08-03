@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 import StyleSheet from '../Styles/Base';
 
@@ -10,8 +11,8 @@ const LabeledText = props => (
 );
 
 LabeledText.propTypes = {
-  children: React.PropTypes.node.isRequired,
-  label: React.PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
+  label: PropTypes.node.isRequired,
 };
 
 export default LabeledText;

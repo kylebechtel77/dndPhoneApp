@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, View, TouchableOpacity } from 'react-native';
 import StyleSheet from '../Styles/AbilityRow';
 import LabeledNumber from './LabeledNumber';
@@ -28,13 +29,13 @@ const AbilityRow = (props) => {
 };
 
 AbilityRow.propTypes = {
-  ability: React.PropTypes.shape({
-    score: React.PropTypes.number.isRequired,
-    isProficient: React.PropTypes.bool.isRequired,
-    name: React.PropTypes.string.isRequired,
+  ability: PropTypes.shape({
+    score: PropTypes.number.isRequired,
+    isProficient: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
   }).isRequired,
-  proficiencyBonus: React.PropTypes.number.isRequired,
-  last: React.PropTypes.bool,
+  proficiencyBonus: PropTypes.number.isRequired,
+  last: PropTypes.bool,
 };
 AbilityRow.defaultProps = {
   last: false,
