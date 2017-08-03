@@ -1,0 +1,133 @@
+{
+   "CharacterName": "Ivan",
+   "Abilities": {
+      "str": {
+         "text": "Strength",
+         "val": 8,
+         "mod": -1,
+         "save": -1
+      },
+      "dex": {
+         "text": "Dexterity",
+         "val": 8,
+         "mod": -1,
+         "save": -1
+      },
+      "con": {
+         "text": "Constitution",
+         "val": 8,
+         "mod": -1,
+         "save": -1
+      },
+      "int": {
+         "text": "Intelligence",
+         "val": 8,
+         "mod": -1,
+         "save": -1
+      },
+      "wis": {
+         "text": "Wisdom",
+         "val": 8,
+         "mod": -1,
+         "save": -1
+      },
+      "char": {
+         "text": "Charisma",
+         "val": 8,
+         "mod": -1,
+         "save": -1
+      }
+   },
+   "Skills": {
+      "acr": {
+         "text": "Acrobatics",
+         "mod": -1,
+         "typ": "(DEX)"
+      },
+      "ani": {
+         "text": "Animal Handling",
+         "mod": -1,
+         "typ": "(WIS)"
+      },
+      "arc": {
+         "text": "Arcana",
+         "mod": -1,
+         "typ": "(INT)"
+      },
+      "ath": {
+         "text": "Athletics",
+         "mod": -1,
+         "typ": "(DEX)"
+      },
+      "dec": {
+         "text": "Deception",
+         "mod": -1,
+         "typ": "(CHA)"
+      },
+      "his": {
+         "text": "History",
+         "mod": -1,
+         "typ": "(INT)"
+      },
+      "ins": {
+         "text": "Insight",
+         "mod": -1,
+         "typ": "(WIS)"
+      },
+      "int": {
+         "text": "Intimidation",
+         "mod": -1,
+         "typ": "(CHA)"
+      },
+      "inv": {
+         "text": "Investigation",
+         "mod": -1,
+         "typ": "(INT)"
+      },
+      "med": {
+         "text": "Medicine",
+         "mod": -1,
+         "typ": "(WIS)"
+      },
+      "nat": {
+         "text": "Nature",
+         "mod": -1,
+         "typ": "(WIS)"
+      },
+      "per": {
+         "text": "Perception",
+         "mod": -1,
+         "typ": "(WIS)"
+      },
+      "prf": {
+         "text": "Performance",
+         "mod": -1,
+         "typ": "(WIS)"
+      },
+      "prs": {
+         "text": "Persuasion",
+         "mod": -1,
+         "typ": "(WIS)"
+      },
+      "rel": {
+         "text": "Religion",
+         "mod": -1,
+         "typ": "(WIS)"
+      },
+      "sle": {
+         "text": "Sleight of Hand",
+         "mod": -1,
+         "typ": "(WIS)"
+      },
+      "ste": {
+         "text": "Stealth",
+         "mod": -1,
+         "typ": "(WIS)"
+      },
+      "sur": {
+         "text": "Survivial",
+         "mod": -1,
+         "typ": "(WIS)"
+      }
+   }
+}

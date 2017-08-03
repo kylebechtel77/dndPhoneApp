@@ -1,50 +1,34 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import AbilityRow from '../Components/AbilityRow';
+import { View, ScrollView } from 'react-native';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 9,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  header: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    paddingTop: 20,
-  },
-});
+import AbilityRow from '../Components/AbilityRow';
+import BaseStyleSheet from '../Styles/Base';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'Ivan',
-      str: { text: 'Strength', val: 8, mod: -1, save: -1 },
-      dex: { text: 'Dexterity', val: 8, mod: -1, save: -1 },
-      con: { text: 'Constitution', val: 8, mod: -1, save: -1 },
-      int: { text: 'Intelligence', val: 8, mod: -1, save: -1 },
-      wis: { text: 'Wisdom', val: 8, mod: -1, save: -1 },
-      char: { text: 'Charisma', val: 8, mod: -1, save: -1 },
+      str: { name: 'Strength', score: 8, isProficient: true },
+      dex: { name: 'Dexterity', score: 13, isProficient: false },
+      con: { name: 'Constitution', score: 8, isProficient: true },
+      int: { name: 'Intelligence', score: 16, isProficient: false },
+      wis: { name: 'Wisdom', score: 8, isProficient: false },
+      cha: { name: 'Charisma', score: 6, isProficient: false },
     };
   }
 
   render() {
     return (
-      <View style={styles.header}>
-        <Text>Name: {this.state.name}</Text>
-        <View style={styles.container}>
-          <Text>ABILITIES</Text>
-          <AbilityRow ability={this.state.str} />
-          <AbilityRow ability={this.state.dex} />
-          <AbilityRow ability={this.state.con} />
-          <AbilityRow ability={this.state.int} />
-          <AbilityRow ability={this.state.wis} />
-          <AbilityRow ability={this.state.char} />
+      <ScrollView>
+        <View style={BaseStyleSheet.card}>
+          <AbilityRow ability={this.state.str} proficiencyBonus={2} />
+          <AbilityRow ability={this.state.dex} proficiencyBonus={2} />
+          <AbilityRow ability={this.state.con} proficiencyBonus={2} />
+          <AbilityRow ability={this.state.int} proficiencyBonus={2} />
+          <AbilityRow ability={this.state.wis} proficiencyBonus={2} />
+          <AbilityRow ability={this.state.cha} proficiencyBonus={2} last />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
