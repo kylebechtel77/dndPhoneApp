@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import StyleSheet from '../Styles/styles';
+import StyleSheet from '../Styles/Base';
 
 const LabeledNumber = props => (
   <View style={StyleSheet.labeledNumberContainer}>

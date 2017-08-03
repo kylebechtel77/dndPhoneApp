@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
 
-import BaseStyleSheet from './Styles/styles';
+import BaseStyleSheet from './Styles/Base';
 import AbilitiesScreen from './Screens/Abilities';
 import SkillsScreen from './Screens/Skills';
 

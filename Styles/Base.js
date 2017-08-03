@@ -17,16 +17,34 @@ export default StyleSheet.create({
     alignItems: 'stretch',
     margin: 10,
   },
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  card2: {
+    flexDirection: 'column',
+    // alignItems: 'stretch',
+    margin: 10,
+  },
+  labeledNumberContainer: {
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    marginLeft: 10,
+    marginRight: 10,
   },
   labeledNumberValue: {
     fontSize: 24,
   },
   labeledNumberLabel: {
+    fontSize: 10,
+  },
+  labeledTextContainer: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    marginLeft: 10,
+    marginRight: 10,
+    flex: 1,
+  },
+  labeledTextValue: {
+    fontSize: 24,
+  },
+  labeledTextLabel: {
     fontSize: 10,
   },
 });
