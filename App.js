@@ -7,7 +7,7 @@ import AbilitiesScreen from './Screens/Abilities';
 import SkillsScreen from './Screens/Skills';
 
 const App = TabNavigator({
-  GeneralInfo: { screen: GeneralInfo },
+  'General Info': { screen: GeneralInfo },
   Abilities: { screen: AbilitiesScreen },
   Skills: { screen: SkillsScreen },
 }, {

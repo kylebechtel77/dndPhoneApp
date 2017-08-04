@@ -2,7 +2,10 @@ import React from 'react';
 import { View, Text, ListView } from 'react-native';
 
 import BaseStyleSheet from '../Styles/Base';
-import StatCalculator from '../utils/statCalculator';
+import LabeledNumber from '../Components/LabeledNumber';
+import DiceRollButton from '../Components/DiceRollButton';
+import Stats from '../utils/stats';
+import Layout from '../Components/Layout';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -41,8 +44,8 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
-    const initiative = StatCalculator.calculateAbilityModifier(this.state.abilities.dex.score);
-    const wisdomModifier = StatCalculator.calculateAbilityModifier(this.state.abilities.wis.score);
+    const initiative = Stats.calculateAbilityModifier(this.state.abilities.dex.score);
+    const wisdomModifier = Stats.calculateAbilityModifier(this.state.abilities.wis.score);
     const passivePerception = wisdomModifier +
       this.state.skills.per.isProficient ? this.state.proficiencyBonus : 0;
     return (
@@ -56,12 +59,46 @@ export default class HomeScreen extends React.Component {
         <Text>
           Level: {this.state.rawClasses.reduce((sum, classData) => sum + classData.level, 0)}
         </Text>
-        <Text>HP: {this.state.hitPoints.current}/{this.state.hitPoints.max}</Text>
-        <Text>AC: {this.state.armorClass}</Text>
-        <Text>Speed: {this.state.speed}</Text>
-        <Text>Initiative: {initiative}</Text>
-        <Text>Proficiency: {this.state.proficiencyBonus}</Text>
-        <Text>Passive Perception: {passivePerception}</Text>
+        <Layout.RowDivider />
+        <Layout.Row>
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <LabeledNumber label="Hit Points">
+              {this.state.hitPoints.current}/{this.state.hitPoints.max}
+            </LabeledNumber>
+          </View>
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <LabeledNumber label="Armor Class">{this.state.armorClass}</LabeledNumber>
+          </View>
+        </Layout.Row>
+        <Layout.RowDivider />
+        <Layout.Row>
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <LabeledNumber label="Move Speed">{this.state.speed}</LabeledNumber>
+          </View>
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <DiceRollButton dice={1} sides={20} modifier={initiative} description="Initiative">
+              <LabeledNumber label="Initiative">{Stats.formatModifier(initiative)}</LabeledNumber>
+            </DiceRollButton>
+          </View>
+        </Layout.Row>
+        <Layout.RowDivider />
+        <Layout.Row>
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <LabeledNumber label="Proficiency">
+              {Stats.formatModifier(this.state.proficiencyBonus)}
+            </LabeledNumber>
+          </View>
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <DiceRollButton
+              dice={1}
+              sides={20}
+              modifier={passivePerception}
+              description="Passive Perception"
+            >
+              <LabeledNumber label={'Passive\nPerception'}>{Stats.formatModifier(passivePerception)}</LabeledNumber>
+            </DiceRollButton>
+          </View>
+        </Layout.Row>
       </View>
     );
   }

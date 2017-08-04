@@ -19,21 +19,30 @@ export default StyleSheet.create({
   },
   card2: {
     flexDirection: 'column',
-    // alignItems: 'stretch',
     margin: 10,
   },
+
+  // LabledNumber Styles
   labeledNumberContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: 5,
+    marginRight: 5,
+    minWidth: 50,
+    minHeight: 50,
   },
   labeledNumberValue: {
     fontSize: 24,
+    alignItems: 'center',
+    textAlign: 'center',
   },
   labeledNumberLabel: {
     fontSize: 10,
+    alignItems: 'center',
+    textAlign: 'center',
   },
+
+  // LabeledText Styles
   labeledTextContainer: {
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -46,5 +55,27 @@ export default StyleSheet.create({
   },
   labeledTextLabel: {
     fontSize: 10,
+  },
+
+  // General Layout Styles
+  row: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+  },
+  rowDivider: {
+    borderTopWidth: 1,
+    borderTopColor: 'grey',
+    marginBottom: 10,
+    marginTop: 10,
+    height: 0,
+  },
+
+  // Button Styles
+  diceRollButton: {
+    borderColor: '#bbb',
+    borderRadius: 5,
+    paddingBottom: 3,
+    elevation: 2,
+    shadowOffset: { width: 2, height: 2 },
   },
 });
