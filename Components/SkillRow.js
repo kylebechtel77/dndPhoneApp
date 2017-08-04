@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import StyleSheet from '../Styles/SkillRowStyle';
 import LabeledNumber from './LabeledNumber';
@@ -16,11 +17,11 @@ const SkillRow = (props) => {
 };
 
 SkillRow.propTypes = {
-  skill: React.PropTypes.shape({
-    val: React.PropTypes.number,
-    mod: React.PropTypes.number,
-    save: React.PropTypes.number,
-    text: React.PropTypes.string,
+  skill: PropTypes.shape({
+    val: PropTypes.number,
+    mod: PropTypes.number,
+    save: PropTypes.number,
+    text: PropTypes.string,
   }).isRequired,
 };
 
