@@ -1,31 +1,33 @@
 import React from 'react';
-import { View, Text, ListView } from 'react-native';
+import { View, Image, Text, Dimensions } from 'react-native';
 
 import BaseStyleSheet from '../Styles/Base';
+import StyleSheet from '../Styles/GeneralInfo';
 import LabeledNumber from '../Components/LabeledNumber';
 import DiceRollButton from '../Components/DiceRollButton';
 import Stats from '../utils/stats';
 import Layout from '../Components/Layout';
 
+const image = require('../Images/backgroundPortrait.png');
+
+const window = Dimensions.get('window');
+
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-    const classData = [
-      {
-        name: 'Barbarian',
-        level: 2,
-      },
-      {
-        name: 'Cleric',
-        level: 3,
-      },
-    ];
     this.state = {
       name: 'Cohen',
       race: 'Human',
-      classes: ds.cloneWithRows(classData),
-      rawClasses: classData,
+      classes: [
+        {
+          name: 'Barbarian',
+          level: 2,
+        },
+        {
+          name: 'Cleric',
+          level: 3,
+        },
+      ],
       hitPoints: {
         current: 28,
         max: 28,
@@ -48,58 +50,65 @@ export default class HomeScreen extends React.Component {
     const wisdomModifier = Stats.calculateAbilityModifier(this.state.abilities.wis.score);
     const passivePerception = wisdomModifier +
       this.state.skills.per.isProficient ? this.state.proficiencyBonus : 0;
+
     return (
-      <View style={BaseStyleSheet.card}>
-        <Text>{this.state.name}</Text>
-        <Text>{this.state.race}</Text>
-        <ListView
-          dataSource={this.state.classes}
-          renderRow={classData => <Text>{classData.name} {classData.level}</Text>}
-        />
-        <Text>
-          Level: {this.state.rawClasses.reduce((sum, classData) => sum + classData.level, 0)}
-        </Text>
-        <Layout.RowDivider />
-        <Layout.Row>
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <LabeledNumber label="Hit Points">
-              {this.state.hitPoints.current}/{this.state.hitPoints.max}
-            </LabeledNumber>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <LabeledNumber label="Armor Class">{this.state.armorClass}</LabeledNumber>
-          </View>
-        </Layout.Row>
-        <Layout.RowDivider />
-        <Layout.Row>
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <LabeledNumber label="Move Speed">{this.state.speed}</LabeledNumber>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <DiceRollButton dice={1} sides={20} modifier={initiative} description="Initiative">
-              <LabeledNumber label="Initiative">{Stats.formatModifier(initiative)}</LabeledNumber>
-            </DiceRollButton>
-          </View>
-        </Layout.Row>
-        <Layout.RowDivider />
-        <Layout.Row>
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <LabeledNumber label="Proficiency">
-              {Stats.formatModifier(this.state.proficiencyBonus)}
-            </LabeledNumber>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <DiceRollButton
-              dice={1}
-              sides={20}
-              modifier={passivePerception}
-              description="Passive Perception"
-            >
-              <LabeledNumber label={'Passive\nPerception'}>{Stats.formatModifier(passivePerception)}</LabeledNumber>
-            </DiceRollButton>
-          </View>
-        </Layout.Row>
-      </View>
+      <Image source={image} style={{ width: window.width, height: window.height }}>
+        <View style={BaseStyleSheet.card}>
+          <Text style={StyleSheet.characterNameRow}>{this.state.name}</Text>
+          <Text style={StyleSheet.characterLevelRow}>
+            Level {this.state.classes.reduce((sum, classData) => sum + classData.level, 0)}
+            {` ${this.state.race}`}
+          </Text>
+          <Layout.Row>
+            {
+              this.state.classes.map(classData =>
+                (<Text key={classData.name} style={StyleSheet.classBlock}>
+                  {classData.name} {classData.level}
+                </Text>))
+            }
+          </Layout.Row>
+          <Layout.RowDivider />
+          <Layout.Row>
+            <View style={StyleSheet.infoBlock}>
+              <LabeledNumber label="Hit Points">
+                {this.state.hitPoints.current}/{this.state.hitPoints.max}
+              </LabeledNumber>
+            </View>
+            <View style={StyleSheet.infoBlock}>
+              <LabeledNumber label="Armor Class">{this.state.armorClass}</LabeledNumber>
+            </View>
+          </Layout.Row>
+          <Layout.RowDivider />
+          <Layout.Row>
+            <View style={StyleSheet.infoBlock}>
+              <LabeledNumber label="Move Speed">{this.state.speed}</LabeledNumber>
+            </View>
+            <View style={StyleSheet.infoBlock}>
+              <DiceRollButton dice={1} sides={20} modifier={initiative} description="Initiative">
+                <LabeledNumber label="Initiative">{Stats.formatModifier(initiative)}</LabeledNumber>
+              </DiceRollButton>
+            </View>
+          </Layout.Row>
+          <Layout.RowDivider />
+          <Layout.Row>
+            <View style={StyleSheet.infoBlock}>
+              <LabeledNumber label="Proficiency">
+                {Stats.formatModifier(this.state.proficiencyBonus)}
+              </LabeledNumber>
+            </View>
+            <View style={StyleSheet.infoBlock}>
+              <DiceRollButton
+                dice={1}
+                sides={20}
+                modifier={passivePerception}
+                description="Passive Perception"
+              >
+                <LabeledNumber label={'Passive\nPerception'}>{Stats.formatModifier(passivePerception)}</LabeledNumber>
+              </DiceRollButton>
+            </View>
+          </Layout.Row>
+        </View>
+      </Image>
     );
   }
 }

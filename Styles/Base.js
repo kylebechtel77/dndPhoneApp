@@ -26,10 +26,8 @@ export default StyleSheet.create({
   labeledNumberContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    marginLeft: 5,
-    marginRight: 5,
-    minWidth: 50,
-    minHeight: 50,
+    minWidth: 45,
+    minHeight: 45,
   },
   labeledNumberValue: {
     fontSize: 24,
@@ -64,7 +62,7 @@ export default StyleSheet.create({
   },
   rowDivider: {
     borderTopWidth: 1,
-    borderTopColor: 'grey',
+    borderTopColor: '#bbb',
     marginBottom: 10,
     marginTop: 10,
     height: 0,
@@ -72,10 +70,15 @@ export default StyleSheet.create({
 
   // Button Styles
   diceRollButton: {
+    backgroundColor: '#eee',
     borderColor: '#bbb',
     borderRadius: 5,
     paddingBottom: 3,
-    elevation: 2,
-    shadowOffset: { width: 2, height: 2 },
+    paddingLeft: 2,
+    paddingRight: 2,
+    marginLeft: 2,
+    marginRight: 2,
+    elevation: 5,
+    shadowOffset: { width: 5, height: 5 },
   },
 });
