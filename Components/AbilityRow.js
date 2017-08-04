@@ -1,29 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View } from 'react-native';
 import StyleSheet from '../Styles/AbilityRow';
 import LabeledNumber from './LabeledNumber';
-import Dice from '../utils/dice';
-import StatCalculator from '../utils/statCalculator';
+import DiceRollButton from '../Components/DiceRollButton';
+import Stats from '../utils/stats';
 
 const AbilityRow = (props) => {
   const ability = props.ability;
-  const mod = StatCalculator.calculateAbilityModifier(ability.score);
-  const modPlus = mod >= 0 ? '+' : '';
+  const mod = Stats.calculateAbilityModifier(ability.score);
+  const modString = Stats.formatModifier(mod);
   const save = mod + (ability.isProficient ? props.proficiencyBonus : 0);
-  const savePlus = save >= 0 ? '+' : '';
+  const saveString = Stats.formatModifier(save);
   const rowStyle = props.last ? StyleSheet.abilityRowLast : StyleSheet.abilityRow;
 
   return (
     <View style={rowStyle}>
       <LabeledNumber label="SCORE"><Text style={{ fontWeight: 'bold' }}>{ability.score}</Text></LabeledNumber>
       <Text style={StyleSheet.abilityName}>{ability.name}</Text>
-      <TouchableOpacity onPress={() => { Dice.alert(Dice.roll(1, 20, mod, `${ability.name} Test`)); }}>
-        <View><LabeledNumber label="MOD">{modPlus + mod}</LabeledNumber></View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => { Dice.alert(Dice.roll(1, 20, save, `${ability.name} Save`)); }}>
-        <View><LabeledNumber label="SAVE">{savePlus + save}</LabeledNumber></View>
-      </TouchableOpacity>
+      <DiceRollButton dice={1} sides={20} modifier={mod} description={`${ability.name} Test`}>
+        <View><LabeledNumber label="MOD">{modString}</LabeledNumber></View>
+      </DiceRollButton>
+      <DiceRollButton dice={1} sides={20} modifier={save} description={`${ability.name} Save`}>
+        <View><LabeledNumber label="SAVE">{saveString}</LabeledNumber></View>
+      </DiceRollButton>
     </View>
   );
 };
