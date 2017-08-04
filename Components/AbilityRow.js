@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 import StyleSheet from '../Styles/AbilityRow';
 import LabeledNumber from './LabeledNumber';
 import DiceRollButton from '../Components/DiceRollButton';
-import Stats from '../utils/stats';
+import Stats from '../Utils/Stats';
 
 const AbilityRow = (props) => {
   const ability = props.ability;

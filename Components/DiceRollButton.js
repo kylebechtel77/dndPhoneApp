@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, TouchableOpacity } from 'react-native';
-import Dice from '../utils/dice';
+import Dice from '../Utils/Dice';
 import BaseStyleSheet from '../Styles/Base';
 
-const image = require('../Images/d20.png');
+const image = require('../Images/D20.png');
 
 const LabeledNumber = (props) => {
   const onPress = () => {

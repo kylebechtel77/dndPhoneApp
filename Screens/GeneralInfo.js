@@ -5,10 +5,10 @@ import BaseStyleSheet from '../Styles/Base';
 import StyleSheet from '../Styles/GeneralInfo';
 import LabeledNumber from '../Components/LabeledNumber';
 import DiceRollButton from '../Components/DiceRollButton';
-import Stats from '../utils/stats';
+import Stats from '../Utils/Stats';
 import Layout from '../Components/Layout';
 
-const image = require('../Images/backgroundPortrait.png');
+const image = require('../Images/BackgroundPortrait.png');
 
 const window = Dimensions.get('window');
 

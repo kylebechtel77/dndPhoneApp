@@ -4,7 +4,7 @@ import { View, ScrollView, Image, Dimensions } from 'react-native';
 import AbilityRow from '../Components/AbilityRow';
 import BaseStyleSheet from '../Styles/Base';
 
-const image = require('../Images/backgroundPortrait.png');
+const image = require('../Images/BackgroundPortrait.png');
 
 const window = Dimensions.get('window');
 
