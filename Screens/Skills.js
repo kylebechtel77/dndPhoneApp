@@ -1,8 +1,12 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Dimensions, Image } from 'react-native';
 import BaseStyleSheet from '../Styles/Base';
 
 import SkillRow from '../Components/SkillRow';
+
+const window = Dimensions.get('window');
+
+const image = require('../Images/BackgroundPortrait.png');
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -34,26 +38,28 @@ export default class HomeScreen extends React.Component {
     // this is unused due to breaking android
     // const { navigate } = this.props.navigation;
     return (
-      <ScrollView style={BaseStyleSheet.card2}>
-        <SkillRow skill={this.state.acr} />
-        <SkillRow skill={this.state.ani} />
-        <SkillRow skill={this.state.arc} />
-        <SkillRow skill={this.state.ath} />
-        <SkillRow skill={this.state.dec} />
-        <SkillRow skill={this.state.his} />
-        <SkillRow skill={this.state.ins} />
-        <SkillRow skill={this.state.int} />
-        <SkillRow skill={this.state.inv} />
-        <SkillRow skill={this.state.med} />
-        <SkillRow skill={this.state.nat} />
-        <SkillRow skill={this.state.per} />
-        <SkillRow skill={this.state.prf} />
-        <SkillRow skill={this.state.prs} />
-        <SkillRow skill={this.state.rel} />
-        <SkillRow skill={this.state.sle} />
-        <SkillRow skill={this.state.ste} />
-        <SkillRow skill={this.state.sur} />
-      </ScrollView>
+      <Image source={image} style={{ width: window.width, height: window.height }}>
+        <ScrollView style={BaseStyleSheet.card2}>
+          <SkillRow skill={this.state.acr} />
+          <SkillRow skill={this.state.ani} />
+          <SkillRow skill={this.state.arc} />
+          <SkillRow skill={this.state.ath} />
+          <SkillRow skill={this.state.dec} />
+          <SkillRow skill={this.state.his} />
+          <SkillRow skill={this.state.ins} />
+          <SkillRow skill={this.state.int} />
+          <SkillRow skill={this.state.inv} />
+          <SkillRow skill={this.state.med} />
+          <SkillRow skill={this.state.nat} />
+          <SkillRow skill={this.state.per} />
+          <SkillRow skill={this.state.prf} />
+          <SkillRow skill={this.state.prs} />
+          <SkillRow skill={this.state.rel} />
+          <SkillRow skill={this.state.sle} />
+          <SkillRow skill={this.state.ste} />
+          <SkillRow skill={this.state.sur} />
+        </ScrollView>
+      </Image>
     );
   }
 }
