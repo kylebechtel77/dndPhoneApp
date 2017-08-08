@@ -1,15 +1,15 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
 import BaseStyleSheet from './Styles/Base';
 import GeneralInfo from './Screens/GeneralInfo';
 import AbilitiesScreen from './Screens/Abilities';
 import SkillsScreen from './Screens/Skills';
-import dndApp from './Reducers'
+import dndApp from './Reducers/Reducer';
 
-let store = createStore(dndApp)
+const store = createStore(dndApp);
 
 const App = TabNavigator({
   'General Info': { screen: GeneralInfo },
@@ -22,7 +22,7 @@ const App = TabNavigator({
 });
 
 export default () => (
-    <Provider store={store}>
-      <App />
-    </Provider> 
+  <Provider store={store}>
+    <App />
+  </Provider>
 );

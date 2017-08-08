@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   skillRow: {
     flexDirection: 'row',
-    //backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: 'grey',
     alignItems: 'stretch',
