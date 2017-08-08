@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Image, Text, Dimensions } from 'react-native';
+import { View, Image, Text, Dimensions, Button } from 'react-native';
+import { connect } from 'react-redux'
 
 import BaseStyleSheet from '../Styles/Base';
 import StyleSheet from '../Styles/GeneralInfo';
@@ -7,61 +8,39 @@ import LabeledNumber from '../Components/LabeledNumber';
 import DiceRollButton from '../Components/DiceRollButton';
 import Stats from '../Utils/Stats';
 import Layout from '../Components/Layout';
+import { levelUp } from '../Actions';
 
 const image = require('../Images/BackgroundPortrait.png');
 
 const window = Dimensions.get('window');
 
-export default class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: 'Cohen',
-      race: 'Human',
-      classes: [
-        {
-          name: 'Barbarian',
-          level: 2,
-        },
-        {
-          name: 'Cleric',
-          level: 3,
-        },
-      ],
-      hitPoints: {
-        current: 28,
-        max: 28,
-      },
-      armorClass: 16,
-      speed: 30,
-      abilities: {
-        dex: { score: 13 },
-        wis: { score: 8 },
-      },
-      proficiencyBonus: 3,
-      skills: {
-        per: { isProficient: true },
-      },
-    };
-  }
 
+
+class HomeScreen extends React.Component {
   render() {
-    const initiative = Stats.calculateAbilityModifier(this.state.abilities.dex.score);
-    const wisdomModifier = Stats.calculateAbilityModifier(this.state.abilities.wis.score);
+    const {character, levelUp} = this.props;
+    const initiative = Stats.calculateAbilityModifier(character.abilities.dex.score);
+    const wisdomModifier = Stats.calculateAbilityModifier(character.abilities.wis.score);
     const passivePerception = wisdomModifier +
-      this.state.skills.per.isProficient ? this.state.proficiencyBonus : 0;
+      character.skills.per.isProficient ? character.proficiencyBonus : 0;
 
     return (
       <Image source={image} style={{ width: window.width, height: window.height }}>
         <View style={BaseStyleSheet.card}>
-          <Text style={StyleSheet.characterNameRow}>{this.state.name}</Text>
+          <Button
+            onPress={() => levelUp(character.id)}
+            title="Learn More"
+            color="#841584"
+            accessibilityLabel="Learn more about this purple button"
+          />
+          <Text style={StyleSheet.characterNameRow}>{character.name}</Text>
           <Text style={StyleSheet.characterLevelRow}>
-            Level {this.state.classes.reduce((sum, classData) => sum + classData.level, 0)}
-            {` ${this.state.race}`}
+            Level {character.classes.reduce((sum, classData) => sum + classData.level, 0)}
+            {` ${character.race}`}
           </Text>
           <Layout.Row>
             {
-              this.state.classes.map(classData =>
+              character.classes.map(classData =>
                 (<Text key={classData.name} style={StyleSheet.classBlock}>
                   {classData.name} {classData.level}
                 </Text>))
@@ -71,17 +50,17 @@ export default class HomeScreen extends React.Component {
           <Layout.Row>
             <View style={StyleSheet.infoBlock}>
               <LabeledNumber label="Hit Points">
-                {this.state.hitPoints.current}/{this.state.hitPoints.max}
+                {character.hitPoints.current}/{character.hitPoints.max}
               </LabeledNumber>
             </View>
             <View style={StyleSheet.infoBlock}>
-              <LabeledNumber label="Armor Class">{this.state.armorClass}</LabeledNumber>
+              <LabeledNumber label="Armor Class">{character.armorClass}</LabeledNumber>
             </View>
           </Layout.Row>
           <Layout.RowDivider />
           <Layout.Row>
             <View style={StyleSheet.infoBlock}>
-              <LabeledNumber label="Move Speed">{this.state.speed}</LabeledNumber>
+              <LabeledNumber label="Move Speed">{character.speed}</LabeledNumber>
             </View>
             <View style={StyleSheet.infoBlock}>
               <DiceRollButton dice={1} sides={20} modifier={initiative} description="Initiative">
@@ -93,7 +72,7 @@ export default class HomeScreen extends React.Component {
           <Layout.Row>
             <View style={StyleSheet.infoBlock}>
               <LabeledNumber label="Proficiency">
-                {Stats.formatModifier(this.state.proficiencyBonus)}
+                {Stats.formatModifier(character.proficiencyBonus)}
               </LabeledNumber>
             </View>
             <View style={StyleSheet.infoBlock}>
@@ -112,3 +91,22 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    character: state.characters[0]
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    levelUp: id => {
+      dispatch(levelUp(id))
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(HomeScreen)
