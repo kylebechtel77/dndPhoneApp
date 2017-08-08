@@ -1,4 +1,4 @@
-import Stats from './stats';
+import Stats from './Stats';
 
 describe('calculating ability score modifiers', () => {
   const modifierMapping = [

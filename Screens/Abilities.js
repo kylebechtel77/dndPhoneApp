@@ -8,7 +8,7 @@ const image = require('../Images/BackgroundPortrait.png');
 
 const window = Dimensions.get('window');
 
-export default class HomeScreen extends React.Component {
+export default class AbilitiesScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
