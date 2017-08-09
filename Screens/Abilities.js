@@ -1,40 +1,66 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, ScrollView, Image, Dimensions } from 'react-native';
+import { connect } from 'react-redux';
 
 import AbilityRow from '../Components/AbilityRow';
 import BaseStyleSheet from '../Styles/Base';
+import Layout from '../Components/Layout';
 
 const image = require('../Images/BackgroundPortrait.png');
 
 const window = Dimensions.get('window');
 
-export default class AbilitiesScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      str: { name: 'Strength', score: 8, isProficient: true },
-      dex: { name: 'Dexterity', score: 13, isProficient: false },
-      con: { name: 'Constitution', score: 8, isProficient: true },
-      int: { name: 'Intelligence', score: 16, isProficient: false },
-      wis: { name: 'Wisdom', score: 8, isProficient: false },
-      cha: { name: 'Charisma', score: 6, isProficient: false },
-    };
-  }
+const AbilitiesScreen = (props) => {
+  const { character } = props;
+  return (
+    <Image source={image} style={{ width: window.width, height: window.height }}>
+      <ScrollView>
+        <View style={BaseStyleSheet.card}>
+          <AbilityRow
+            ability={character.abilities.str}
+            proficiencyBonus={character.proficiencyBonus}
+          />
+          <Layout.RowDivider />
+          <AbilityRow
+            ability={character.abilities.dex}
+            proficiencyBonus={character.proficiencyBonus}
+          />
+          <Layout.RowDivider />
+          <AbilityRow
+            ability={character.abilities.con}
+            proficiencyBonus={character.proficiencyBonus}
+          />
+          <Layout.RowDivider />
+          <AbilityRow
+            ability={character.abilities.int}
+            proficiencyBonus={character.proficiencyBonus}
+          />
+          <Layout.RowDivider />
+          <AbilityRow
+            ability={character.abilities.wis}
+            proficiencyBonus={character.proficiencyBonus}
+          />
+          <Layout.RowDivider />
+          <AbilityRow
+            ability={character.abilities.cha}
+            proficiencyBonus={character.proficiencyBonus}
+            last
+          />
+        </View>
+      </ScrollView>
+    </Image>
+  );
+};
 
-  render() {
-    return (
-      <Image source={image} style={{ width: window.width, height: window.height }}>
-        <ScrollView>
-          <View style={BaseStyleSheet.card}>
-            <AbilityRow ability={this.state.str} proficiencyBonus={2} />
-            <AbilityRow ability={this.state.dex} proficiencyBonus={2} />
-            <AbilityRow ability={this.state.con} proficiencyBonus={2} />
-            <AbilityRow ability={this.state.int} proficiencyBonus={2} />
-            <AbilityRow ability={this.state.wis} proficiencyBonus={2} />
-            <AbilityRow ability={this.state.cha} proficiencyBonus={2} last />
-          </View>
-        </ScrollView>
-      </Image>
-    );
-  }
-}
+AbilitiesScreen.propTypes = {
+  character: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+
+const mapStateToProps = state => ({
+  character: state.characters[0],
+});
+
+export default connect(
+  mapStateToProps,
+)(AbilitiesScreen);

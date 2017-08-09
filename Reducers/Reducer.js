@@ -24,15 +24,11 @@ const initialState = {
       },
       armorClass: 16,
       speed: 30,
-      abilities: {
-        dex: { score: 13 },
-        wis: { score: 8 },
-      },
       proficiencyBonus: 3,
       skills: {
         per: { isProficient: true },
       },
-      characterAbilities: {
+      abilities: {
         str: { name: 'Strength', score: 8, isProficient: true },
         dex: { name: 'Dexterity', score: 13, isProficient: false },
         con: { name: 'Constitution', score: 8, isProficient: true },
