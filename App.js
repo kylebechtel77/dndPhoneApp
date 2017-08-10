@@ -7,6 +7,7 @@ import BaseStyleSheet from './Styles/Base';
 import GeneralInfo from './Screens/GeneralInfo';
 import AbilitiesScreen from './Screens/Abilities';
 import SkillsScreen from './Screens/Skills';
+import EquipmentScreen from './Screens/Equipment';
 import dndApp from './Reducers/Reducer';
 
 const store = createStore(dndApp);
@@ -16,6 +17,7 @@ const App = TabNavigator(
     'General Info': { screen: GeneralInfo },
     Abilities: { screen: AbilitiesScreen },
     Skills: { screen: SkillsScreen },
+    Equipment: { screen: EquipmentScreen },
   },
   {
     tabBarOptions: {
