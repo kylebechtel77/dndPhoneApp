@@ -7,12 +7,6 @@ export default StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 10,
   },
-  abilityRowLast: {
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    paddingBottom: 10,
-    paddingTop: 10,
-  },
   abilityName: {
     fontSize: 24,
     flex: 1,

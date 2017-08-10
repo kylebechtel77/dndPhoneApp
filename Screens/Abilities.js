@@ -45,7 +45,6 @@ const AbilitiesScreen = (props) => {
           <AbilityRow
             ability={character.abilities.cha}
             proficiencyBonus={character.proficiencyBonus}
-            last
           />
         </View>
       </ScrollView>

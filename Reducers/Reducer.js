@@ -18,6 +18,13 @@ const initialState = {
           level: 3,
         },
       ],
+      currency: {
+        platinum: 1,
+        gold: 2,
+        electrum: 3,
+        silver: 4,
+        copper: 5,
+      },
       hitPoints: {
         current: 28,
         max: 28,

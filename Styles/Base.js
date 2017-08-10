@@ -58,7 +58,7 @@ export default StyleSheet.create({
   // General Layout Styles
   row: {
     flexDirection: 'row',
-    alignItems: 'stretch',
+    alignItems: 'center',
   },
   rowDivider: {
     borderTopWidth: 1,

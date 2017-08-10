@@ -12,10 +12,9 @@ const AbilityRow = (props) => {
   const modString = Stats.formatModifier(mod);
   const save = mod + (ability.isProficient ? props.proficiencyBonus : 0);
   const saveString = Stats.formatModifier(save);
-  const rowStyle = props.last ? StyleSheet.abilityRowLast : StyleSheet.abilityRow;
 
   return (
-    <View style={rowStyle}>
+    <View style={StyleSheet.abilityRow}>
       <LabeledNumber label="SCORE"><Text style={{ fontWeight: 'bold' }}>{ability.score}</Text></LabeledNumber>
       <Text style={StyleSheet.abilityName}>{ability.name}</Text>
       <DiceRollButton dice={1} sides={20} modifier={mod} description={`${ability.name} Test`}>
@@ -35,7 +34,6 @@ AbilityRow.propTypes = {
     name: PropTypes.string.isRequired,
   }).isRequired,
   proficiencyBonus: PropTypes.number.isRequired,
-  last: PropTypes.bool,
 };
 AbilityRow.defaultProps = {
   last: false,

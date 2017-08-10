@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, ScrollView, Image, Dimensions } from 'react-native';
+import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 
-import AbilityRow from '../Components/AbilityRow';
 import BaseStyleSheet from '../Styles/Base';
+import LabeledNumber from '../Components/LabeledNumber';
 import Layout from '../Components/Layout';
 
 const image = require('../Images/BackgroundPortrait.png');
@@ -17,36 +17,27 @@ const EquipmentScreen = (props) => {
     <Image source={image} style={{ width: window.width, height: window.height }}>
       <ScrollView>
         <View style={BaseStyleSheet.card}>
-          <AbilityRow
-            ability={character.abilities.str}
-            proficiencyBonus={character.proficiencyBonus}
-          />
+          <Layout.Row>
+            <Text style={{ textAlign: 'center', fontSize: 24, flex: 1 }}>Currency</Text>
+          </Layout.Row>
+          <Layout.Row>
+            <View style={{ flex: 1 }}>
+              <LabeledNumber label="Platinum">{character.currency.platinum}</LabeledNumber>
+            </View>
+            <View style={{ flex: 1 }}>
+              <LabeledNumber label="Gold">{character.currency.gold}</LabeledNumber>
+            </View>
+            <View style={{ flex: 1 }}>
+              <LabeledNumber label="Electrum">{character.currency.electrum}</LabeledNumber>
+            </View>
+            <View style={{ flex: 1 }}>
+              <LabeledNumber label="Silver">{character.currency.silver}</LabeledNumber>
+            </View>
+            <View style={{ flex: 1 }}>
+              <LabeledNumber label="Copper">{character.currency.copper}</LabeledNumber>
+            </View>
+          </Layout.Row>
           <Layout.RowDivider />
-          <AbilityRow
-            ability={character.abilities.dex}
-            proficiencyBonus={character.proficiencyBonus}
-          />
-          <Layout.RowDivider />
-          <AbilityRow
-            ability={character.abilities.con}
-            proficiencyBonus={character.proficiencyBonus}
-          />
-          <Layout.RowDivider />
-          <AbilityRow
-            ability={character.abilities.int}
-            proficiencyBonus={character.proficiencyBonus}
-          />
-          <Layout.RowDivider />
-          <AbilityRow
-            ability={character.abilities.wis}
-            proficiencyBonus={character.proficiencyBonus}
-          />
-          <Layout.RowDivider />
-          <AbilityRow
-            ability={character.abilities.cha}
-            proficiencyBonus={character.proficiencyBonus}
-            last
-          />
         </View>
       </ScrollView>
     </Image>
