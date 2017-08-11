@@ -35,8 +35,5 @@ AbilityRow.propTypes = {
   }).isRequired,
   proficiencyBonus: PropTypes.number.isRequired,
 };
-AbilityRow.defaultProps = {
-  last: false,
-};
 
 export default AbilityRow;
