@@ -1,40 +1,48 @@
 import React from 'react';
-import { View, ScrollView, Image, Dimensions } from 'react-native';
+import PropTypes from 'prop-types';
+import { View, Button, Text, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
 
-import AbilityRow from '../Components/AbilityRow';
 import BaseStyleSheet from '../Styles/Base';
+import DescriptionStyleSheet from '../Styles/Description';
+import LabeledNumber from '../Components/LabeledNumber';
+import ItemBox from '../Components/ItemBox';
+import Layout from '../Components/Layout';
+import BaseScreen from './BaseScreen';
 
-const image = require('../Images/BackgroundPortrait.png');
+const DescriptionScreen = props => (
+  <BaseScreen>
+    <Layout.Row>
+      <Text style={{ textAlign: 'center', fontSize: 24, flex: 1 }}>Description</Text>
+    </Layout.Row>
+    <Layout.RowDivider />
+    <ScrollView style={BaseStyleSheet.flexDefault}>
+      <View style={BaseStyleSheet.card}>
+        <ItemBox itemName="Character Details" />
+      </View>
+      <View style={BaseStyleSheet.card}>
+        <ItemBox itemName="Physical Characteristics" />
+      </View>
+      <View style={BaseStyleSheet.card}>
+        <ItemBox itemName="Personal Characteristics" />
+      </View>
+    </ScrollView>
+    <Layout.RowDivider />
+    <Layout.Row>
+      <View style={BaseStyleSheet.flexDefault} />
+      <Button style={DescriptionStyleSheet.addItemButton} title="+ Add Item" onPress={() => {}} />
+    </Layout.Row>
+  </BaseScreen>
+);
 
-const window = Dimensions.get('window');
+DescriptionScreen.propTypes = {
+  character: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
-export default class Description extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      str: { name: 'Strength', score: 8, isProficient: true },
-      dex: { name: 'Dexterity', score: 13, isProficient: false },
-      con: { name: 'Constitution', score: 8, isProficient: true },
-      int: { name: 'Intelligence', score: 16, isProficient: false },
-      wis: { name: 'Wisdom', score: 8, isProficient: false },
-      cha: { name: 'Charisma', score: 6, isProficient: false },
-    };
-  }
+const mapStateToProps = state => ({
+  character: state.characters[0],
+});
 
-  render() {
-    return (
-      <Image source={image} style={{ width: window.width, height: window.height }}>
-        <ScrollView>
-          <View style={BaseStyleSheet.card}>
-            <AbilityRow ability={this.state.str} proficiencyBonus={2} />
-            <AbilityRow ability={this.state.dex} proficiencyBonus={2} />
-            <AbilityRow ability={this.state.con} proficiencyBonus={2} />
-            <AbilityRow ability={this.state.int} proficiencyBonus={2} />
-            <AbilityRow ability={this.state.wis} proficiencyBonus={2} />
-            <AbilityRow ability={this.state.cha} proficiencyBonus={2} last />
-          </View>
-        </ScrollView>
-      </Image>
-    );
-  }
-}
+export default connect(
+  mapStateToProps,
+)(DescriptionScreen);

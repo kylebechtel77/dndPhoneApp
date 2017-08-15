@@ -41,6 +41,9 @@ export default StyleSheet.create({
   },
 
   // LabeledText Styles
+  flexDefault: {
+    flex: 1,
+  },
   labeledTextContainer: {
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -56,9 +59,21 @@ export default StyleSheet.create({
   },
 
   // General Layout Styles
+  baseScreen: {
+    flex: 1,
+    flexDirection: 'column',
+    padding: 10,
+  },
+  backgroundImage: {
+    position: 'absolute',
+  },
+  smallSpacer: {
+    width: 10,
+    height: 10,
+  },
   row: {
     flexDirection: 'row',
-    alignItems: 'stretch',
+    alignItems: 'center',
   },
   rowDivider: {
     borderTopWidth: 1,

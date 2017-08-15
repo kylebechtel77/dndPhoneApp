@@ -18,6 +18,13 @@ const initialState = {
           level: 3,
         },
       ],
+      currency: {
+        platinum: 1,
+        gold: 2,
+        electrum: 3,
+        silver: 4,
+        copper: 5,
+      },
       hitPoints: {
         current: 28,
         max: 28,
@@ -53,6 +60,29 @@ const initialState = {
         ste: { text: 'Stealth', mod: -1, typ: '(WIS)' },
         sur: { text: 'Survivial', mod: -1, typ: '(WIS)' },
       },
+      description: {
+        characterDetails: {
+          alignment: 'evil',
+          languages: ['common'],
+          faith: 'druish?',
+          lifestyle: 'messy',
+        },
+        physical: {
+          hair:'blond',
+          age: 20,
+          eyes: 'blue',
+          skin: 'grey', 
+          height: '22ft',
+          weight: 200, 
+          gender:'male',
+          other: 'long beard'
+        },
+        personal: {
+          traits: 'stubborn',
+          ideals: 'I can have ideals?',
+          bonds: ''
+        },
+      }
     },
   ],
 };
